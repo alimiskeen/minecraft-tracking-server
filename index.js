@@ -27,6 +27,8 @@ function getServerInfo() {
   return statPromise;
 }
 
+var shit;
 getServerInfo().then((a) => {
-  console.log(a);
+  shit = a;
 });
+console.log(shit);
