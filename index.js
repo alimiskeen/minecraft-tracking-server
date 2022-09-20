@@ -3,7 +3,7 @@
 // const port = 80;
 
 const Query = require("minecraft-query");
-const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
+// const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
 
 // q.fullStat()
 //   .then((success) => {
@@ -21,9 +21,16 @@ const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
 // app.get("/", (req, res) => {});
 
 function getServerInfo() {
-  return q.basicStat().then((success) => {
-    return success;
-  });
+  const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
+  q.fullStat()
+    .then((success) => {
+      console.log(success);
+      return q.basicStat();
+    })
+    .then((success) => {
+      console.log(success);
+      q.close();
+    });
 }
 
-console.log(getServerInfo());
+getServerInfo();
