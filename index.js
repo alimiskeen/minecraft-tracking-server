@@ -21,10 +21,11 @@ const Query = require("minecraft-query");
 app.get("/", (req, res) => {
   const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
   q.fullStat().then((success) => {
-    console.log(success);
+    // console.log(success);
+    res.send(success);
     q.close();
   });
-  res.send("look in the terminal. is it there?");
+  // res.send("look in the terminal. is it there?");
 });
 
 app.listen(port, () => {
