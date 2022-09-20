@@ -4,11 +4,14 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/styles.css">
+    <meta name="description" content="Category: Education">
     <title>MC Server</title>
   </head>
   <body>
     <h1>Ali's server information</h1>
-    <h2>Description: <%= info.motd %>, version: <%= info.version %></h2>
+    <h2>Description: "<%= info.motd %>"</h2>
+    <h2>version: <%= info.version %></h2>
     <h2>online: <%= info.online_players %>/<%= info.max_players %></h2>
     <h3>users in the server: <%= info.players.join(", "); %> </h3>
   </body>
