@@ -22,13 +22,11 @@ const Query = require("minecraft-query");
 
 function getServerInfo() {
   const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
-  const statPromise = q.fullStat().then((success) => success);
-
-  return statPromise;
+  return (statPromise = q.fullStat().then((success) => {
+    resolve(success);
+    q.close();
+  }));
 }
 
-var shit;
-getServerInfo().then((a) => {
-  shit = a;
-});
-console.log(shit);
+var stats = await getServerInfo();
+console.log(stats);
