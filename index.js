@@ -21,7 +21,9 @@ const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
 // app.get("/", (req, res) => {});
 
 function getServerInfo() {
-  return q.basicStat();
+  return q.basicStat().then((success) => {
+    return success;
+  });
 }
 
 console.log(getServerInfo());
