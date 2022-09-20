@@ -13,6 +13,10 @@
     <h2>Description: "<%= info.motd %>"</h2>
     <h2>version: <%= info.version %></h2>
     <h2>online: <%= info.online_players %>/<%= info.max_players %></h2>
-    <h3>users in the server: <%= info.players.join(", "); %> </h3>
+    <% if (info.players.length === 0) { %>
+        <h3>There are no players in the server.</h3>
+    <% } else { %>
+        <h3>users in the server: <%= info.players.join(", "); %> </h3>
+    <% } %> 
   </body>
 </html>
