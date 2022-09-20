@@ -22,19 +22,11 @@ const Query = require("minecraft-query");
 
 function getServerInfo() {
   const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
-  var stats = {};
-  q.fullStat()
-    .then((success) => {
-      // console.log(success);
-      stats = success;
-      return q.basicStat();
-    })
-    .then((success) => {
-      // console.log(success);
-      q.close();
-    });
-  return stats;
+  const statPromise = q.fullStat().then((success) => success);
+
+  return statPromise;
 }
 
-let obj = getServerInfo();
-console.log(obj);
+getServerInfo().then((a) => {
+  console.log(a);
+});
