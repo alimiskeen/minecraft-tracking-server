@@ -10,7 +10,7 @@ app.use(express.static("public"));
 const Query = require("minecraft-query");
 
 app.get("/", (req, res) => {
-  const q = new Query({ host: "localhost", port: 9630, timeout: 7500 });
+  const q = new Query({ host: "localhost", port: 9630, timeout: 500 });
   q.fullStat().then(
     (success) => {
       res.render("home", { info: success });
@@ -18,11 +18,11 @@ app.get("/", (req, res) => {
       q.close();
     },
     (failure) => {
-      res.send("Server is likely off");
+      res.render("error");
     }
   );
 });
 
 app.listen(port, () => {
-  console.log("started server on port: ${port}");
+  console.log(`started server on port: ${port}`);
 });
