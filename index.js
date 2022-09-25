@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const port = 80;
 
+const app2 = express();
+
 const ejs = require("ejs");
 
 app.set("view engine", "ejs");
@@ -23,6 +25,14 @@ app.get("/", (req, res) => {
   );
 });
 
+app2.get("/", (req, res) => {
+  res.redirect("51.81.182.26");
+});
+
 app.listen(port, () => {
   console.log(`started server on port: ${port}`);
+});
+
+app2.listen(25565, () => {
+  console.log("mc port is now rerouting");
 });
