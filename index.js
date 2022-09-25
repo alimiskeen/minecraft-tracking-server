@@ -12,7 +12,7 @@ app.use(express.static("public"));
 const Query = require("minecraft-query");
 
 app.get("/", (req, res) => {
-  const q = new Query({ host: "51.81.182.26", port: 7744, timeout: 1000 });
+  const q = new Query({ host: "51.81.182.26", port: 25565, timeout: 1000 });
   q.fullStat().then(
     (success) => {
       res.render("home", { info: success });
